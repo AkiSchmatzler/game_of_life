@@ -5,7 +5,7 @@
 #include "jeu.h"
 
 int main (int argc, char ** argv) {
-	
+
 	if (argc != 2 )
 	{
 		printf("usage : main <fichier grille>");
@@ -16,7 +16,7 @@ int main (int argc, char ** argv) {
 	init_grille_from_file(argv[1],&g);
 	alloue_grille (g.nbl, g.nbc, &gc);
 	affiche_grille(g);
-	
+
 	debut_jeu(&g, &gc);
 
 	libere_grille(&g);
