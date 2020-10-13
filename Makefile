@@ -1,17 +1,46 @@
-main : main.o grille.o io.o jeu.o
-	gcc -o main.c grille.c io.c jeu.c -lm
+SOURCES = $(wildcard $(C_REP)*.c)
+OBJETS = $(SOURCES:.c=.o)
+OBJETSC = $(patsubst $(C_REP)%.c, $(O_REP)ù.o, $(SOUCRES))
+IFLAGS = -I include -W -Wall
+CC = gcc
+O_REP = obj/
+E_REP = bin/
+C_REP = src/
+H_REP = include/
+D_REP = dist/
 
-main.o : main.c grille.h io.h jeu.h
-	gcc -c main.c
+vpath %.o $(O_REP)
+vpath %.c $(C_REP)
+vpath %.h $(H_REP)
+vpath main bin
 
-grille.o : grille.c grille.h
-	gcc -c grille.c
+main : $(OBJETS)
+	$(CC) -g -o $@ $(OBJETSC)
+	mv $@ $(O_REP)
 
-io.o : io.c io.h
-	gcc -c io.c
+%.o : %.c io.h
+	$(CC) -c $(IFLAGS) -o $@ $<
+	mv $@ $(E_REP)
 
-jeu.o : jeu.c jeu.h
-	gcc -c jeu.c
+.PHONY : clean 
 
 clean : 
-	rm main main.o grille.o io.o jeu.o
+	rm $(O_REP)* $(E_REP)*
+	@echo "\n###### Les repertoires obj/ et bin/ sont vidés #######\n"
+
+rmdist :
+	rm $(D_REP)*
+	rmdir $(D_REP)*
+	@echo "\n###### Archive effacée ######\n"
+
+dist :
+	@mkdir -p dist
+	Doxygen -g
+	tar -l -cvf dist/Jeu_de_la_vie.tar.xz grilles include Makefile Doxyfile
+	@echo "\n ######## Archive créée ######### \n"
+
+
+
+
+
+
