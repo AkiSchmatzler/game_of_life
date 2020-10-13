@@ -1,5 +1,7 @@
-hello 
+#JEU DE LA VIE
 
-change in branch amendements
+	Bienvenue sur mon implémentation du projet jeu de la vie,
+ effectué dans le cadre du cours "Techniques de développement "de L2S3 Informatique,
+ Université de Strasbourg, année 2020/2021
 
-second change in branch amendements
+
