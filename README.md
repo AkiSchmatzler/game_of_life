@@ -1,5 +1,5 @@
-hello 
+	Bienvenue sur mon implémentation du projet jeu de la vie, 
+effectué dans le cadre du cours "Techniques de développement "de L2S3 Informatique,
+Université de Strasbourg, année 2020/2021
 
-change in branch amendements
 
-second change in branch amendements
