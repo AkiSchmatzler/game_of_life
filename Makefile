@@ -2,6 +2,7 @@ SOURCES = $(wildcard $(C_REP)*.c)
 OBJETS = $(SOURCES:.c=.o)
 OBJETSC = $(patsubst $(C_REP)%.c, $(O_REP)ù.o, $(SOUCRES))
 IFLAGS = -I include -W -Wall
+DOCGEN = doxygen
 CC = gcc
 O_REP = obj/
 E_REP = bin/
@@ -27,6 +28,9 @@ main : $(OBJETS)
 clean : 
 	rm $(O_REP)* $(E_REP)*
 	@echo "\n###### Les repertoires obj/ et bin/ sont vidés #######\n"
+
+docs : 
+	$(DOCGEN)
 
 rmdist :
 	rm $(D_REP)*
