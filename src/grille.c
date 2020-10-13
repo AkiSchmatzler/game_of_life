@@ -1,5 +1,16 @@
 #include "grille.h"
 
+/**
+ * \file grille.c
+ * \brief gère la grille et les cellules
+ * \author Aki Schmatzler
+ * \version 1.0
+ */
+ 
+
+
+
+
 void alloue_grille(int l, int c, grille* g){
 	int i, j;
 

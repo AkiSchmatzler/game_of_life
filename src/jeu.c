@@ -1,5 +1,12 @@
 #include "jeu.h"
 
+/**
+ * \file jeu.c
+ * \brief evolution de la partie
+ * \author Aki Schmatzler
+ * \version 1.0
+ */
+
 int compte_voisins_vivants (int i, int j, grille g){
 	int v = 0, l=g.nbl, c = g.nbc;
 	v+= est_vivante(modulo(i-1,l),modulo(j-1,c),g);

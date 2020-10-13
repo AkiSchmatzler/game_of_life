@@ -4,6 +4,13 @@
 #include "io.h"
 #include "jeu.h"
 
+/**
+ * \file jeu.h
+ * \brief evolution de la partie
+ * \author Aki Schmatzler
+ * \version 1.0
+ */
+
 int main (int argc, char ** argv) {
 
 	if (argc != 2 )

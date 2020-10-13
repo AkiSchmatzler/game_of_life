@@ -1,5 +1,12 @@
 #include "io.h"
 
+/**
+ * \file io.c
+ * \brief se charge de l'affichage (shell)
+ * \author Aki Schmatzler
+ * \version 1.0
+ */
+
 void affiche_trait (int c){
 	int i;
 	for (i=0; i<c; ++i) printf ("|---");
@@ -41,6 +48,22 @@ void debut_jeu(grille *g, grille *gc){
 				evolue(g,gc);
 				efface_grille(*g);
 				affiche_grille(*g);
+				break;
+			}
+			case 'n': //demande pour changer de grille
+			{
+				libere_grille(g);
+				libere_grille(gc);
+				char numGrid[10];
+				char fileGrid[100] = "grilles/grille";
+				printf("Numero de la nouvelle grille a charger: ");
+				scanf("%s",numGrid);
+				strcat(fileGrid, numGrid); //Permet de rajouter a une chaine existante le contenu d'une seconde
+				strcat(fileGrid, ".txt");
+				init_grille_from_file(fileGrid, g);
+				alloue_grille(g->nbl, g->nbc, gc);
+				affiche_grille(*g);
+				printf("\n");
 				break;
 			}
 			default : 
