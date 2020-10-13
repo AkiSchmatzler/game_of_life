@@ -36,19 +36,18 @@ clean:
 	rm $(O_REP)* $(E_REP)*
 	@echo "\n######## Les repertoires obj/ et bin/ sont vides ########\n"
 	
-.PHONY : docs
 
 docs:
-	doxygen
+	doxygen -g
 	
-.PHONY : dist	
+
+	
 	
 dist: 
 	@mkdir -p dist
 	tar -l -cvf dist/AkiSCHMATZLER.tar.xz grilles include makefile Doxyfile
 	@echo "\n ######## Archive créée ########\n"
 	
-.PHONY : rmdist	
 
 rmdist: 
 		rm $(D_REP)*
