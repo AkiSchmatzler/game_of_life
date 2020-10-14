@@ -20,3 +20,7 @@ make dist crée une archive et la place dans /dist (ATTENTION: LE DOXYFILE DOIT 
 AVANT DE FAIRE make dist)
 make rmdist supprime l'archive et le repertoire dist
 
+Eecution: pour executer (apres compilation), faire ./bin/main grille/grille<num_grille>.txt (les autres
+grilles sont ensuite accesibles avec nx, x étant le numéro de la grille. Pour quitter
+l'execution: q
+
