@@ -34,7 +34,9 @@ main : $(OBJETS)
 	
 clean:
 	rm $(O_REP)* $(E_REP)*
-	@echo "\n######## Les repertoires obj/ et bin/ sont vides ########\n"
+	rmdir $(O_REP)
+	rmdir $(E_REP)
+	@echo "\n######## Les repertoires obj/ et bin/ ont ete vides puis supprimes ########\n"
 	
 
 docs:
