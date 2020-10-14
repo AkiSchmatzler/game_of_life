@@ -38,7 +38,7 @@ clean:
 	
 
 docs:
-	doxygen -g
+	doxygen Doxyfile
 	
 
 dist: 
