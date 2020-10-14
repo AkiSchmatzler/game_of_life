@@ -10,8 +10,7 @@
  * \version 1.0
  */
 
-// modulo modifié pour traiter correctement les bords i=0 et j=0
-// dans le calcul des voisins avec bords cycliques
+
 /**
  * \brief modulo modifié pour traiter correctement les bords i=0 et j=0 dans le calcul des voisins avec bords cycliques
  * \param i  
