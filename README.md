@@ -13,7 +13,7 @@ chaque x.0 correspond à un niveau du projet complété, ainsi la version 1.0
 
 ### Makefile:   
 `make`: compile en mettant les .o dans /bin et le main .o dans /obj   
-`make docs`: génère la documentation 
+`make docs`: génère la documentation  
 `make clean`: vide /bin et/obj et supprime les répertoires  
 `make dist`: crée une archive et la place dans /dist   
 `make rmdist`: supprime l'archive et le répertoire /dist  
