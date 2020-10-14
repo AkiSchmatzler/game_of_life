@@ -11,9 +11,11 @@ Versionnage: chaque x.0 correspond à un niveau du projet complété, ainsi la v
 
 Les fichiers .c sont dans sources, les .h dans include et les grillesx.txt dans grilles
 
-Makefile: make compile en mettant les .o dans /bin et le main .o dans /obj 
-		  make docs génère la documentation
-		  make clean vide /bin et/obj et supprime les repertoires
-		  make dist crée une archive et la place dans /dist
-		  make rmdist supprime l'archive et le repertoire dist
-		  
+Makefile: 
+
+make compile en mettant les .o dans /bin et le main .o dans /obj 
+make docs génère la documentation
+make clean vide /bin et/obj et supprime les repertoires
+make dist crée une archive et la place dans /dist
+make rmdist supprime l'archive et le repertoire dist
+
