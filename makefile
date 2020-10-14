@@ -43,7 +43,6 @@ docs:
 
 dist: 
 	@mkdir -p dist
-	doxygen -g
 	tar -l -cvf dist/SchmatzlerAki-GoL-1.0.tar.xz src makefile Doxyfile
 	@echo "\n ######## Archive créée ########\n"
 	
