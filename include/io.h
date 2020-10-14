@@ -23,6 +23,7 @@ void affiche_trait (int c);
  * \brief affichage d'une ligne de la grille
  * \param c taille de la ligne
  * \param ligne pointeur sur tableau d'entier qui indique si les differentes cellules de la ligne sont vivantes ou mortes
+ */
 void affiche_ligne (int c, int* ligne);
 
 /**

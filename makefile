@@ -41,11 +41,10 @@ docs:
 	doxygen -g
 	
 
-	
-	
 dist: 
 	@mkdir -p dist
-	tar -l -cvf dist/AkiSCHMATZLER.tar.xz grilles include makefile Doxyfile
+	doxygen -g
+	tar -l -cvf dist/SchmatzlerAki-GoL-1.0.tar.xz src makefile Doxyfile
 	@echo "\n ######## Archive créée ########\n"
 	
 
