@@ -22,11 +22,7 @@ void alloue_grille(int l, int c, grille* g){
 	for (i = 0; i < l; i++) {
 
 		g->cellules[i] = (int*) malloc(c*sizeof(int));
-<<<<<<< HEAD
-		for (j=0; j<c; j++) {
-=======
 		for (j = 0; j < c; j++) {
->>>>>>> a7c50217e0dce219132521eeca8b20d23b728ba9
 			set_morte(i, j, *g);
 
 		}
