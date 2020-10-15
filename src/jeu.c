@@ -7,17 +7,10 @@
  * \version 1.0
  */
 
-int compte_voisins_vivants (int i, int j, grille g){
+int compte_voisins_vivants_c (int i, int j, grille g){
+	//nombre voisins voisinage cyclique
 	int v = 0, l=g.nbl, c = g.nbc;
-/*	v+= est_vivante(i-1, j-1, g);
-	v+= est_vivante(i-1, j, g);
-	v+= est_vivante(i-1, j+1, g);
-	v+= est_vivante( i, j-1, g);
-	v+= est_vivante(i, j+1, g);
-	v+= est_vivante(i+1, j-1, g);
-	v+= est_vivante(i+1, j, g);
-	v+= est_vivante(i+1, j+1, g);*/
-	
+
 	v+= est_vivante(modulo(i-1,l),modulo(j-1,c),g);
 	v+= est_vivante(modulo(i-1,l),modulo(j,c),g);
 	v+= est_vivante(modulo(i-1,l),modulo(j+1,c),g);
@@ -26,23 +19,25 @@ int compte_voisins_vivants (int i, int j, grille g){
 	v+= est_vivante(modulo(i+1,l),modulo(j-1,c),g);
 	v+= est_vivante(modulo(i+1,l),modulo(j,c),g);
 	v+= est_vivante(modulo(i+1,l),modulo(j+1,c),g);
-		
-
+	
 	return v; 
 }
 
-/*int compte_voisins_vivants_nc (int i, int j, grille g){
-	//cyclique
-	int v=0, l=g.nbl, c=g.nbc;
-	if (i!=0){
-		v+= est_vivante(i-1, j-1, g);
-		v+= est_vivante(i-1, j, g);
-		v+= est_vivante(i-1, j+1, g);
-		v+= est_vivante( i, j-1, g);
-		v+= est_vivante(i, j+1, g);
-		v+= est_vivante(i+1, j-1, g);
-		v+= est_vivante(i+1, j, g);
-		v+= est_vivante(i+1, j+1, g);*/
+int compte_voisins_vivants_nc (int i, int j, grille g){
+	//nombre voisins voisinage non cyclique
+	int v = 0, l=g.nbl, c = g.nbc, plus_i=i+1, moins_i=i-1, plus_j=j+1, moins_j=j-1;
+	
+	v+= (moins_i>=0 && moins_j>=0)? est_vivante(i-1, j-1, g) : 0;
+	v+= (moins_i>=0) ? est_vivante(i-1, j, g) : 0;
+	v+= (moins_i>=0 && plus_j<c) ? est_vivante(i-1, j+1, g) : 0;
+	v+= (moins_j>=0) ? est_vivante(i, j-1, g) : 0;
+	v+= (plus_j<c) ? est_vivante(i, j+1, g) : 0;
+	v+= (plus_i<l && moins_j>=0) ? est_vivante(i+1, j-1, g) : 0;
+	v+= (plus_i<l) ? est_vivante(i+1, j, g) : 0;
+	v+= (plus_i<l && plus_j<c) ? est_vivante(i+1, j+1, g) : 0;
+	
+	return v;
+}
 	
 	
 
@@ -50,14 +45,14 @@ int compte_voisins_vivants (int i, int j, grille g){
 
 
 
-void evolue (grille *g, grille *gc){
+void evolue (grille *g, grille *gc, int (*compte_voisins_vivants)(int, int, grille)){
 	copie_grille (*g,*gc); // copie temporaire de la grille
 	int i,j,l=g->nbl, c = g->nbc,v;
 	for (i=0; i<l; i++)
 	{
 		for (j=0; j<c; ++j)
 		{
-			v = compte_voisins_vivants (i, j, *gc);
+			v = compte_voisins_vivants(i, j, *gc);
 			if (est_vivante(i,j,*g)) 
 			{ // evolution d'une cellule vivante
 				if ( v!=2 && v!= 3 ) set_morte(i,j,*g);
