@@ -1,5 +1,6 @@
 #include "io.h"
 #include <string.h>
+int tps_evol=0; //variable donnant la "génération" à laquelle on est
 
 /**
  * \file io.c
@@ -24,7 +25,9 @@ void affiche_ligne (int c, int* ligne){
 }
 
 void affiche_grille (grille g){
+	
 	int i, l=g.nbl, c=g.nbc;
+	printf("temps d'évolution: %d",tps_evol);
 	printf("\n");
 	affiche_trait(c);
 	for (i=0; i<l; ++i) {
@@ -48,6 +51,7 @@ void debut_jeu(grille *g, grille *gc){
 			{ // touche "entree" pour évoluer
 				evolue(g,gc);
 				efface_grille(*g);
+				tps_evol++;
 				affiche_grille(*g);
 				break;
 			}
@@ -55,16 +59,17 @@ void debut_jeu(grille *g, grille *gc){
 			{
 				libere_grille(g);
 				libere_grille(gc);
-				char numGrid[10];
-				char fileGrid[100] = "grilles/grille";
-				printf("Numero de la nouvelle grille a charger: ");
-				scanf("%s",numGrid);
-				strcat(fileGrid, numGrid); //Permet de rajouter a une chaine existante le contenu d'une seconde
-				strcat(fileGrid, ".txt");
-				init_grille_from_file(fileGrid, g);
+				char numGrille[5];
+				char fileGrille[30] = "grilles/grille";
+				printf("Numero de la nouvelle grille: ");
+				scanf("%s",numGrille);
+				strcat(fileGrille, numGrille); //Permet de rajouter a une chaine existante le contenu d'une seconde
+				strcat(fileGrille, ".txt");
+				init_grille_from_file(fileGrille, g);
 				alloue_grille(g->nbl, g->nbc, gc);
 				affiche_grille(*g);
 				printf("\n");
+				tps_evol=-1;
 				break;
 			}
 			default : 

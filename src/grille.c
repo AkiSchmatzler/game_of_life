@@ -17,11 +17,11 @@ void alloue_grille(int l, int c, grille* g){
 	g->nbl = l;
 	g->nbc = c;
 
-	g->cellules = (int**) malloc(l * sizeof(int*));
+	g->cellules = (int**) malloc(l*sizeof(int*));
 
 	for (i = 0; i < l; i++) {
 
-		g->cellules[i] = (int*) malloc(c * sizeof(int));
+		g->cellules[i] = (int*) malloc(c*sizeof(int));
 		for (j = 0; j < c; j++) {
 			set_morte(i, j, *g);
 
