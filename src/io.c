@@ -1,13 +1,14 @@
 #include "io.h"
 #include <string.h>
 int tps_evol=1; //variable donnant la "génération" à laquelle on est
-int voisinage = 0;
+int voisinage = 0; //vosinage cyclique ou non cyclique (0 correspond au voisinage cyclique)
+int vieillissement = 0; //vieillissement ou non (0 correspond à pas de vieillissement)
 
 /**
  * \file io.c
  * \brief se charge de l'affichage (shell)
  * \author Aki Schmatzler
- * \version 1.0
+ * \version 2.0
  */
 
 void affiche_trait (int c){
@@ -18,10 +19,19 @@ void affiche_trait (int c){
 }
 
 void affiche_ligne (int c, int* ligne){
-	int i;
-	for (i=0; i<c; ++i) 
-		if (ligne[i] == 0 ) printf ("|   "); else printf ("| O ");
-	printf("|\n");
+	if(vieillissement == 0){
+		int i;
+		for (i=0; i<c; ++i) 
+			if (ligne[i] == 0 ) printf ("|   "); else printf ("| O ");
+		printf("|\n");
+	}
+	
+	else{
+		int i;
+		for (i=0; i<c; ++i) 
+			if (ligne[i] == 0 ) printf ("|   "); else printf ("| %d ", ligne[i]);
+		printf("|\n");
+	}
 	return;
 }
 
@@ -29,6 +39,7 @@ void affiche_grille (grille g){
 	
 	int i, l=g.nbl, c=g.nbc;
 	printf("Voisinage: %d", voisinage);
+	printf("	Vieillissement: %d", vieillissement);
 	printf("	temps d'évolution: %d",tps_evol);
 	printf("\n");
 	affiche_trait(c);
@@ -53,10 +64,11 @@ void debut_jeu(grille *g, grille *gc){
 		switch (c) {
 			case '\n' : 
 			{ // touche "entree" pour évoluer
-				evolue(g,gc, compte_voisins_vivants);
+				//evolue(g,gc, compte_voisins_vivants, vieillissement);
 				efface_grille(*g);
 				tps_evol++;
 				affiche_grille(*g);
+				evolue(g,gc, compte_voisins_vivants, vieillissement);
 				break;
 			}
 			case 'n': //demande pour changer de grille
@@ -87,7 +99,16 @@ void debut_jeu(grille *g, grille *gc){
 					voisinage = 0;
 				}
 				break;
-					
+			}
+			case 'v': //activation et désactivation du vieilissement
+			{
+				if (vieillissement == 0) {
+					vieillissement = 1;
+				}
+				else{
+					vieillissement = 0;
+				}
+				break;
 			}
 			default : 
 			{ // touche non traitée

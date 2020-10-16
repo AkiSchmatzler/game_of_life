@@ -9,7 +9,7 @@
  * \file grille.h
  * \brief [header] gère la grille et les cellules
  * \author Aki Schmatzler
- * \version 1.0
+ * \version 2.0
  */
  
 
@@ -63,7 +63,7 @@ static inline void set_morte(int i, int j, grille g){g.cellules[i][j] = 0;}
  * \param g grille
  * \return an integer (for true or false)
  */
-static inline int est_vivante(int i, int j, grille g){return g.cellules[i][j] == 1;}
+static inline int est_vivante(int i, int j, grille g){return ((1<=g.cellules[i][j]) && (g.cellules[i][j]<=9));}
 
 /**
  * \brief recopie gs dans gd (sans allocation)

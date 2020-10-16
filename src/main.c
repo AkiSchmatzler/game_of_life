@@ -8,11 +8,11 @@
  * \file jeu.h
  * \brief evolution de la partie
  * \author Aki Schmatzler
- * \version 1.0
+ * \version 2.0
  */
 
 int main (int argc, char ** argv) {
-
+	system("clear");
 	if (argc != 2 )
 	{
 		printf("usage : main <fichier grille>");

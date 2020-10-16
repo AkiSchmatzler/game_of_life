@@ -7,7 +7,7 @@
  * \file jeu.h
  * \brief evolution de la partie
  * \author Aki Schmatzler
- * \version 1.0
+ * \version 2.0
  */
 
 
@@ -42,7 +42,8 @@ int compte_voisins_vivants_nc (int i, int j, grille g);
  * \param g pointeur sur la grille
  * \param gc pointeur sur grille vide
  * \param *compte_voisins_vivants pointeur sur une fonction qui prend comme args 2 entiers et une grille et qui renvoit un entier
+ * \param vieillessement si vieillissement == 1 alors les cellules sont incrémentés de génération en génération 
  */
-void evolue (grille *g, grille *gc, int (*compte_voisins_vivants)(int, int, grille));
+void evolue (grille *g, grille *gc, int (*compte_voisins_vivants)(int, int, grille), int vieillissement);
 
 #endif
