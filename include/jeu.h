@@ -41,6 +41,7 @@ int compte_voisins_vivants_nc (int i, int j, grille g);
  * \brief faire évoluer la grille g d'un pas de temps
  * \param g pointeur sur la grille
  * \param gc pointeur sur grille vide
+ * \param *compte_voisins_vivants pointeur sur une fonction qui prend comme args 2 entiers et une grille et qui renvoit un entier
  */
 void evolue (grille *g, grille *gc, int (*compte_voisins_vivants)(int, int, grille));
 
