@@ -9,7 +9,7 @@
  * \file grille.h
  * \brief [header] gère la grille et les cellules
  * \author Aki Schmatzler
- * \version 2.0
+ * \version 3.0
  */
  
 
@@ -55,6 +55,16 @@ static inline void set_vivante(int i, int j, grille g){g.cellules[i][j] = 1;}
  * \param g grille
  */
 static inline void set_morte(int i, int j, grille g){g.cellules[i][j] = 0;}
+
+
+/**
+ * \brief rend plus que morte (ne peut jamais vivre) la cellule de coordonnées (i,j) de la grille g
+ * \param i abscisse de la cellule
+ * \param j ordonnée de la cellule
+ * \param g grille
+ */
+static inline void set_plus_que_morte(int i, int j, grille g){g.cellules[i][j] = -1;}
+
 
 /**
  * \brief vérifie si la cellule de coordonnées (i,j) de la grille g est vivante

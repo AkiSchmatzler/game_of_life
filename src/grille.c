@@ -1,14 +1,13 @@
 #include "grille.h"
+#define N 3 //nombre de case plus que mortes
 
 /**
  * \file grille.c
  * \brief gère la grille et les cellules
  * \author Aki Schmatzler
- * \version 2.0
+ * \version 3.0
  */
  
-
-
 
 
 void alloue_grille(int l, int c, grille* g){
@@ -24,7 +23,6 @@ void alloue_grille(int l, int c, grille* g){
 		g->cellules[i] = (int*) malloc(c*sizeof(int));
 		for (j = 0; j < c; j++) {
 			set_morte(i, j, *g);
-
 		}
 	}
 }
@@ -47,6 +45,7 @@ void init_grille_from_file (char * filename, grille* g){
 	assert (pfile != NULL);
 	
 	int i,j,n,l,c,vivantes=0;
+	int mortes = 0;
 	
 	fscanf(pfile, "%d", & l);
 	fscanf(pfile, "%d", & c);
@@ -58,11 +57,21 @@ void init_grille_from_file (char * filename, grille* g){
 		fscanf(pfile, "%d", & i);
 		fscanf(pfile, "%d", & j);
 		set_vivante(i,j,*g);
-	}
+		}
+
+	fscanf(pfile, "%d", & mortes);
+	for (n=0; n< mortes; ++n){
+		fscanf(pfile, "%d", & i);
+		fscanf(pfile, "%d", & j);
+		set_plus_que_morte(i,j,*g);
+		}
+
 	
 	fclose (pfile);
 	return;
 }
+
+
 
 
 void copie_grille (grille gs, grille gd){

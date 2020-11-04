@@ -8,10 +8,10 @@
  * \file jeu.h
  * \brief evolution de la partie
  * \author Aki Schmatzler
- * \version 2.0
+ * \version 3.0
  */
 
-int main (int argc, char ** argv) {
+int main (int argc, char ** argv){
 	system("clear");
 	if (argc != 2 )
 	{

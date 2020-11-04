@@ -8,7 +8,7 @@ int vieillissement = 0; //vieillissement ou non (0 correspond à pas de vieillis
  * \file io.c
  * \brief se charge de l'affichage (shell)
  * \author Aki Schmatzler
- * \version 2.0
+ * \version 3.0
  */
 
 void affiche_trait (int c){
@@ -22,14 +22,15 @@ void affiche_ligne (int c, int* ligne){
 	if(vieillissement == 0){
 		int i;
 		for (i=0; i<c; ++i) 
-			if (ligne[i] == 0 ) printf ("|   "); else printf ("| O ");
+			if (ligne[i] == 0 ) printf ("|   "); else if (ligne[i] == -1) printf ("|\e[31m X \e[0m"); else printf("| O ");
 		printf("|\n");
 	}
 	
+	//affichage vieillissement 
 	else{
 		int i;
 		for (i=0; i<c; ++i) 
-			if (ligne[i] == 0 ) printf ("|   "); else printf ("| %d ", ligne[i]);
+			if (ligne[i] == 0 ) printf ("|   "); else if (ligne[i] == -1) printf ("|\e[31m X \e[0m"); else printf ("| %d ", ligne[i]);
 		printf("|\n");
 	}
 	return;
@@ -64,7 +65,6 @@ void debut_jeu(grille *g, grille *gc){
 		switch (c) {
 			case '\n' : 
 			{ // touche "entree" pour évoluer
-				//evolue(g,gc, compte_voisins_vivants, vieillissement);
 				efface_grille(*g);
 				tps_evol++;
 				affiche_grille(*g);

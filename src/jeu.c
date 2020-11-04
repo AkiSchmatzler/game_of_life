@@ -4,7 +4,7 @@
  * \file jeu.c
  * \brief evolution de la partie
  * \author Aki Schmatzler
- * \version 2.0
+ * \version 3.0
  */
 
 int compte_voisins_vivants_c (int i, int j, grille g){
@@ -47,7 +47,9 @@ int compte_voisins_vivants_nc (int i, int j, grille g){
 
 void evolue (grille *g, grille *gc, int (*compte_voisins_vivants)(int, int, grille), int vieillissement){
 	copie_grille (*g,*gc); // copie temporaire de la grille
+
 	int i,j,l=g->nbl, c = g->nbc,v;
+
 	if(vieillissement == 0){
 		for (i=0; i<l; i++)
 		{
@@ -60,11 +62,14 @@ void evolue (grille *g, grille *gc, int (*compte_voisins_vivants)(int, int, gril
 				}
 				else 
 				{ // evolution d'une cellule morte
-					if ( v==3 ) set_vivante(i,j,*g);
+					if ( v==3 && (g->cellules[i][j]!=-1)){
+						set_vivante(i,j,*g);
+					}
 				}
 			}
 		}
 	}
+
 	else{
 		for (i=0; i<l; i++)
 		{
