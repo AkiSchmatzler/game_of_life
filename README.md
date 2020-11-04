@@ -1,6 +1,6 @@
 # PROJET JEU DE LA VIE
  
-## Version 2.0
+## Version 3.0
 
 **Bienvenue sur mon implémentation du projet jeu de la vie, effectué dans le cadre du cours "Techniques de développement "de L2S3 Informatique, Université de Strasbourg, année 2020/2021**
 
@@ -13,7 +13,7 @@ chaque x.0 correspond à un niveau du projet complété, ainsi la version 1.0
 
 ### Makefile:   
 `make`: compile en mettant les .o dans /bin et le main dans /obj   
-`make docs`: génère la documentation  
+`make docs`: génère la documentation html  
 `make clean`: vide /bin et/obj et supprime les répertoires  
 `make dist`: crée une archive et la place dans /dist   
 `make rmdist`: supprime l'archive et le répertoire /dist  
@@ -32,5 +32,9 @@ Pour activer/désactiver le vieillissement des cellules, appuyer sur la touche *
 **Affichage:**    
 *Vieillissement: 0* : Les cellules ne vieilissent pas    
 *Vieillissement: 1*: Les cellules vieillissent (de age 1 à age 9, elles meurent après)  
+
+#### Cases non accessibles: 
+Les cases non accessibles (qui ne peuvent pas être vivantes) sont marqués par un X rouge. 
+Elles ont été spécifiées aléatoirement par mes soins dans les fichiers *.txt*.  
    
 
