@@ -78,9 +78,11 @@ void evolue (grille *g, grille *gc, int (*compte_voisins_vivants)(int, int, gril
 				v = compte_voisins_vivants(i, j, *gc);
 				if (est_vivante(i,j,*g)) 
 				{ // evolution d'une cellule vivante avec incrémentation
-					g->cellules[i][j]+=1;
 					
+					g->cellules[i][j]+=1;
+
 					if ((v!=2 && v!= 3) || (g->cellules[i][j]>9)) set_morte(i,j,*g);
+
 				}
 				else 
 				{ // evolution d'une cellule morte

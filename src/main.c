@@ -12,7 +12,6 @@
  */
 
 int main (int argc, char ** argv){
-	system("clear");
 	if (argc != 2 )
 	{
 		printf("usage : main <fichier grille>");
@@ -20,6 +19,7 @@ int main (int argc, char ** argv){
 	}
 
 	grille g, gc;
+	system("clear");
 	init_grille_from_file(argv[1],&g);
 	alloue_grille (g.nbl, g.nbc, &gc);
 	affiche_grille(g);

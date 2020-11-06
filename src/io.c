@@ -1,8 +1,9 @@
 #include "io.h"
-#include <string.h>
+#include<string.h>
 int tps_evol=1; //variable donnant la "génération" à laquelle on est
 int voisinage = 0; //vosinage cyclique ou non cyclique (0 correspond au voisinage cyclique)
 int vieillissement = 0; //vieillissement ou non (0 correspond à pas de vieillissement)
+int perfection = 0;
 
 /**
  * \file io.c
@@ -58,17 +59,25 @@ void efface_grille (grille g){
 }
 
 void debut_jeu(grille *g, grille *gc){
-	int (*compte_voisins_vivants) (int, int, grille) = compte_voisins_vivants_c;
-	char c = getchar(); 
+	char c = getchar();
+	int (*compte_voisins_vivants) (int, int, grille) = compte_voisins_vivants_c; 
 	while (c != 'q') // touche 'q' pour quitter
 	{ 
 		switch (c) {
 			case '\n' : 
 			{ // touche "entree" pour évoluer
-				efface_grille(*g);
+
 				tps_evol++;
+
+				if(perfection%2 == 0) {evolue(g,gc, compte_voisins_vivants, vieillissement);}
+				
+				efface_grille(*g);
 				affiche_grille(*g);
-				evolue(g,gc, compte_voisins_vivants, vieillissement);
+
+				if(perfection%2 == 1) {evolue(g,gc, compte_voisins_vivants, vieillissement);}
+
+				
+
 				break;
 			}
 			case 'n': //demande pour changer de grille
@@ -107,7 +116,9 @@ void debut_jeu(grille *g, grille *gc){
 				}
 				else{
 					vieillissement = 0;
+
 				}
+				perfection ++;
 				break;
 			}
 			default : 

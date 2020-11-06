@@ -21,6 +21,7 @@ main : $(OBJETS)
 	gcc -g -o $@ $(OBJETSC)
 	mkdir -p $(E_REP)
 	mv $@ $(E_REP)
+	@echo "\n ########  La compilation fut un succés   ##########\n"
 
 
 %.o : %.c
