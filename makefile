@@ -46,7 +46,7 @@ docs:
 
 dist: 
 	@mkdir -p dist
-	tar -l -cvf dist/SchmatzlerAki-GoL-2.0.tar.xz src makefile Doxyfile
+	tar -l -cvf dist/SchmatzlerAki-GoL-3.0.tar.xz src makefile Doxyfile
 	@echo "\n ######## Archive créée ########\n"
 	
 

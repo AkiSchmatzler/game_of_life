@@ -3,7 +3,7 @@
 int tps_evol=1; //variable donnant la "génération" à laquelle on est
 int voisinage = 0; //vosinage cyclique ou non cyclique (0 correspond au voisinage cyclique)
 int vieillissement = 0; //vieillissement ou non (0 correspond à pas de vieillissement)
-int perfection = 0;
+int noBug = 0;  //permet d'assurer le bon fonctionnement du vieillissement
 
 /**
  * \file io.c
@@ -67,17 +67,17 @@ void debut_jeu(grille *g, grille *gc){
 			case '\n' : 
 			{ // touche "entree" pour évoluer
 
-				tps_evol++;
 
-				if(perfection%2 == 0) {evolue(g,gc, compte_voisins_vivants, vieillissement);}
+				if(noBug == 0) {
+					evolue(g,gc, compte_voisins_vivants, vieillissement);
+					tps_evol++;
+				}
 				
 				efface_grille(*g);
 				affiche_grille(*g);
 
-				if(perfection%2 == 1) {evolue(g,gc, compte_voisins_vivants, vieillissement);}
-
-				
-
+				noBug = 0;
+			
 				break;
 			}
 			case 'n': //demande pour changer de grille
@@ -86,6 +86,7 @@ void debut_jeu(grille *g, grille *gc){
 				libere_grille(gc);
 				char numGrille[5];
 				char fileGrille[30] = "grilles/grille";
+				system("clear");
 				printf("Numero de la nouvelle grille: ");
 				scanf("%s",numGrille);
 				strcat(fileGrille, numGrille); //Permet de rajouter a une chaine existante le contenu d'une seconde
@@ -113,12 +114,13 @@ void debut_jeu(grille *g, grille *gc){
 			{
 				if (vieillissement == 0) {
 					vieillissement = 1;
+					noBug = 1;
 				}
 				else{
 					vieillissement = 0;
+					noBug = 1;
 
 				}
-				perfection ++;
 				break;
 			}
 			default : 

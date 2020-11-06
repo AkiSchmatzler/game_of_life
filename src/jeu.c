@@ -59,12 +59,11 @@ void evolue (grille *g, grille *gc, int (*compte_voisins_vivants)(int, int, gril
 				if (est_vivante(i,j,*g)) 
 				{ // evolution d'une cellule vivante
 					if ( v!=2 && v!= 3 ) set_morte(i,j,*g);
+					else set_vivante(i,j,*g);
 				}
 				else 
 				{ // evolution d'une cellule morte
-					if ( v==3 && (g->cellules[i][j]!=-1)){
-						set_vivante(i,j,*g);
-					}
+					if ( v==3 && (g->cellules[i][j]!=-1)) set_vivante(i,j,*g);
 				}
 			}
 		}
@@ -82,11 +81,10 @@ void evolue (grille *g, grille *gc, int (*compte_voisins_vivants)(int, int, gril
 					g->cellules[i][j]+=1;
 
 					if ((v!=2 && v!= 3) || (g->cellules[i][j]>9)) set_morte(i,j,*g);
-
 				}
 				else 
 				{ // evolution d'une cellule morte
-					if ( v==3 ) set_vivante(i,j,*g);
+					if ( v==3 && (g->cellules[i][j]!=-1)) set_vivante(i,j,*g);
 				}
 			}
 		}
