@@ -1,6 +1,7 @@
 SOURCES = $(wildcard $(C_REP)*.c)
 OBJETS = $(SOURCES:.c=.o)
 OBJETSC = $(patsubst $(C_REP)%.c, $(O_REP)%.o, $(SOURCES))
+CC = gcc
 
 
 O_REP = obj/
@@ -10,6 +11,8 @@ H_REP = include/
 D_REP = dist/
 IFLAGS = -I include -W -Wall
 
+MODE = CAIRO
+
 VPATH = $(H_REP)
 vpath %.o $(E_REP)
 vpath %.c $(C_REP)
@@ -17,20 +20,22 @@ vpath %.h $(H_REP)
 vpath main $(O_REP)
 
 
+
+
 main : $(OBJETS)
-	gcc -g -o $@ $(OBJETSC)
+	$(CC) -g -o $@ $(OBJETSC) -Llib/ -Iinclude -I/usr/include/cairo -lcairo -lm -lX11
 	mkdir -p $(E_REP)
 	mv $@ $(E_REP)
-	@echo "\n ########  La compilation fut un succés   ##########\n"
+	@echo "\n ########  La compilation fut un franc succés   ##########\n"
 
 
-%.o : %.c
-	gcc -c $(IFLAGS) -o $@ $< 
+%.o : %.c graphic.h
 	mkdir -p $(O_REP)
+	$(CC) -D$(MODE) -c $(IFLAGS) -o $@ $< -I/opt/x11/include
 	mv $@ $(O_REP)
 
 
-.PHONY : clean
+.PHONY : clean mrproper
 
 	
 clean:

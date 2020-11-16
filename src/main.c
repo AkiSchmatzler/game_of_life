@@ -3,6 +3,7 @@
 #include "grille.h"
 #include "io.h"
 #include "jeu.h"
+#include "graphic.h"
 
 /**
  * \file jeu.h
@@ -22,11 +23,21 @@ int main (int argc, char ** argv){
 	system("clear");
 	init_grille_from_file(argv[1],&g);
 	alloue_grille (g.nbl, g.nbc, &gc);
-	affiche_grille(g);
 
+
+	#ifdef CAIRO
+
+	debut_jeu_cairo(&g, &gc);
+
+	#else
+
+	affiche_grille(g);
 	debut_jeu(&g, &gc);
+
+	#endif 
 
 	libere_grille(&g);
 	libere_grille(&gc);
+
 	return 0;
 }

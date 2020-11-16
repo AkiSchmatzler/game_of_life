@@ -1,7 +1,11 @@
 #include "io.h"
+
+#include <stdio.h>
+#include <stdlib.h>
 #include<string.h>
+
 int tps_evol=1; //variable donnant la "génération" à laquelle on est
-int voisinage = 0; //vosinage cyclique ou non cyclique (0 correspond au voisinage cyclique)
+int voisinage = 0; //voisinage cyclique ou non cyclique (0 correspond au voisinage cyclique)
 int vieillissement = 0; //vieillissement ou non (0 correspond à pas de vieillissement)
 int noBug = 0;  //permet d'assurer le bon fonctionnement du vieillissement
 
@@ -66,8 +70,6 @@ void debut_jeu(grille *g, grille *gc){
 		switch (c) {
 			case '\n' : 
 			{ // touche "entree" pour évoluer
-
-
 				if(noBug == 0) {
 					evolue(g,gc, compte_voisins_vivants, vieillissement);
 					tps_evol++;
@@ -119,7 +121,6 @@ void debut_jeu(grille *g, grille *gc){
 				else{
 					vieillissement = 0;
 					noBug = 1;
-
 				}
 				break;
 			}
@@ -134,3 +135,6 @@ void debut_jeu(grille *g, grille *gc){
 	}
 	return;	
 }
+
+
+

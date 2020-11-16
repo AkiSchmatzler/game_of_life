@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include "grille.h"
 #include "jeu.h"
+#include "graphic.h"
+
+
 
 /**
  * \file io.h
