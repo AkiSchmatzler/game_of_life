@@ -21,7 +21,7 @@ chaque x.0 correspond à un niveau du projet complété, ainsi la version 1.0
 ### Execution:   
 pour exécuter (après compilation), faire `./bin/main grilles/grille<num_grille>.txt` (les autres grilles sont ensuite accessibles avec la touche n. Pour quitter l'exécution: q
 
-##Affichage shell  
+## Affichage shell  
 (compilation avec `make MODE=TEXTE`)  
 
 #### Calcul cyclique/non cyclique:  
