@@ -22,6 +22,7 @@ vpath main $(O_REP)
 
 
 
+
 main : $(OBJETS)
 	$(CC) -g -o $@ $(OBJETSC) -Llib/ -Iinclude -I/usr/include/cairo -lcairo -lm -lX11
 	mkdir -p $(E_REP)
@@ -51,7 +52,7 @@ docs:
 
 dist: 
 	@mkdir -p dist
-	tar -l -cvf dist/SchmatzlerAki-GoL-3.0.tar.xz src makefile Doxyfile
+	tar -l -cvf dist/SchmatzlerAki-GoL-4.0.tar.xz src makefile Doxyfile
 	@echo "\n ######## Archive créée ########\n"
 	
 

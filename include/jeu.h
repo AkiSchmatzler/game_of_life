@@ -7,7 +7,7 @@
  * \file jeu.h
  * \brief evolution de la partie
  * \author Aki Schmatzler
- * \version 3.0
+ * \version 4.0
  */
 
 

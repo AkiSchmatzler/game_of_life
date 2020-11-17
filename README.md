@@ -1,6 +1,6 @@
 # PROJET JEU DE LA VIE
  
-## Version 3.0
+## Version 4.0
 
 **Bienvenue sur mon implémentation du projet jeu de la vie, effectué dans le cadre du cours "Techniques de développement "de L2S3 Informatique, Université de Strasbourg, année 2020/2021**
 
@@ -21,6 +21,9 @@ chaque x.0 correspond à un niveau du projet complété, ainsi la version 1.0
 ### Execution:   
 pour exécuter (après compilation), faire `./bin/main grilles/grille<num_grille>.txt` (les autres grilles sont ensuite accessibles avec la touche n. Pour quitter l'exécution: q
 
+##Affichage shell  
+(compilation avec `make MODE=TEXTE`)  
+
 #### Calcul cyclique/non cyclique:  
 Pour activer/désactiver le calcul cyclique, appuyer sur la touche *c*.  
 **Affichage:**    
@@ -36,5 +39,25 @@ Pour activer/désactiver le vieillissement des cellules, appuyer sur la touche *
 #### Cases non accessibles: 
 Les cases non accessibles (qui ne peuvent pas être vivantes) sont marqués par un X rouge. 
 Elles ont été spécifiées aléatoirement par mes soins dans les fichiers *.txt*.  
-   
+
+
+## Affichage graphique (cairo) 
+(compilation avec `make`)  
+
+#### Calcul cyclique/non cyclique:  
+Pour activer/désactiver le calcul cyclique, appuyer sur la touche *c*.  
+**Affichage:**    
+*cyclic grid : [activated]* correspond au Calcul cyclique  
+*cyclic grid: [desactivated]* correspond au Calcul non cyclique  
+
+#### Vieillissement:  
+Pour activer/désactiver le vieillissement des cellules, appuyer sur la touche *v*  
+**Affichage:**    
+*aging of cells: [desactivated]* : Les cellules ne vieilissent pas    
+*aging of cells: [activated]*: Les cellules vieillissent (de age 1 à age 9, elles meurent après)  
+
+#### Cases non accessibles: 
+Les cases non accessibles (qui ne peuvent pas être vivantes) sont marqués par un carré bleu remplissant la case. 
+Elles ont été spécifiées aléatoirement par mes soins dans les fichiers *.txt*.  
+
 

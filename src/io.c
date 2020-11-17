@@ -4,17 +4,19 @@
 #include <stdlib.h>
 #include<string.h>
 
+/**
+ * \file io.c
+ * \brief se charge de l'affichage (shell)
+ * \author Aki Schmatzler
+ * \version 4.0
+ */
+
+
 int tps_evol=1; //variable donnant la "génération" à laquelle on est
 int voisinage = 0; //voisinage cyclique ou non cyclique (0 correspond au voisinage cyclique)
 int vieillissement = 0; //vieillissement ou non (0 correspond à pas de vieillissement)
 int noBug = 0;  //permet d'assurer le bon fonctionnement du vieillissement
 
-/**
- * \file io.c
- * \brief se charge de l'affichage (shell)
- * \author Aki Schmatzler
- * \version 3.0
- */
 
 void affiche_trait (int c){
 	int i;

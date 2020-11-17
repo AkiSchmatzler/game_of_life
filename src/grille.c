@@ -5,7 +5,7 @@
  * \file grille.c
  * \brief gère la grille et les cellules
  * \author Aki Schmatzler
- * \version 3.0
+ * \version 4.0
  */
  
 

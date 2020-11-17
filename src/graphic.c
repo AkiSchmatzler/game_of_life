@@ -2,7 +2,12 @@
 #include <string.h>
 #include <stdio.h>
 
-
+/**
+ * \file grpahic.c
+ * \brief se charge de l'affichage graphique
+ * \author Aki Schmatzler
+ * \version 4.0
+ */
 
 
 extern int tps_evol; //variable donnant la "génération" à laquelle on est (venant de io.c)

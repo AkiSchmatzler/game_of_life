@@ -6,10 +6,10 @@
 #include "graphic.h"
 
 /**
- * \file jeu.h
- * \brief evolution de la partie
+ * \file mainc.c
+ * \brief lance l'execution en mode graphique ou shell
  * \author Aki Schmatzler
- * \version 3.0
+ * \version 4.0
  */
 
 int main (int argc, char ** argv){
@@ -25,14 +25,14 @@ int main (int argc, char ** argv){
 	alloue_grille (g.nbl, g.nbc, &gc);
 
 
-	#ifdef CAIRO
-
-	debut_jeu_cairo(&g, &gc);
-
-	#else
-
+	#ifdef TEXTE
+	
 	affiche_grille(g);
 	debut_jeu(&g, &gc);
+	
+	#else
+
+	debut_jeu_cairo(&g, &gc);
 
 	#endif 
 
