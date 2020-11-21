@@ -8,7 +8,7 @@
  * \file io.c
  * \brief se charge de l'affichage (shell)
  * \author Aki Schmatzler
- * \version 4.0
+ * \version 5.0
  */
 
 
@@ -16,7 +16,9 @@ int tps_evol=1; //variable donnant la "génération" à laquelle on est
 int voisinage = 0; //voisinage cyclique ou non cyclique (0 correspond au voisinage cyclique)
 int vieillissement = 0; //vieillissement ou non (0 correspond à pas de vieillissement)
 int noBug = 0;  //permet d'assurer le bon fonctionnement du vieillissement
-
+int oscillation = 0;  //oscillation affiché ou pas
+int pas=0;		//nombre d'évolution a partir de laquelle la grille se repete identique a elle meme
+int delais = 0;
 
 void affiche_trait (int c){
 	int i;
@@ -50,6 +52,13 @@ void affiche_grille (grille g){
 	printf("	Vieillissement: %d", vieillissement);
 	printf("	temps d'évolution: %d",tps_evol);
 	printf("\n");
+
+	if(oscillation){
+		if(pas == 0)printf("pas d'oscillation dans la limite des calculs effectués ");
+		else printf("pas: %d delais: %d", pas, delais);
+	}
+	
+	printf("\n");
 	affiche_trait(c);
 	for (i=0; i<l; ++i) {
 		affiche_ligne(c, g.cellules[i]);
@@ -75,7 +84,9 @@ void debut_jeu(grille *g, grille *gc){
 				if(noBug == 0) {
 					evolue(g,gc, compte_voisins_vivants, vieillissement);
 					tps_evol++;
+					oscillation = 0;
 				}
+
 				
 				efface_grille(*g);
 				affiche_grille(*g);
@@ -98,6 +109,7 @@ void debut_jeu(grille *g, grille *gc){
 				init_grille_from_file(fileGrille, g);
 				alloue_grille(g->nbl, g->nbc, gc);
 				tps_evol=0;
+				pas = 0;
 				affiche_grille(*g);
 				printf("\n");
 				break;
@@ -106,7 +118,7 @@ void debut_jeu(grille *g, grille *gc){
 			{
 				if(voisinage == 0) {
 					compte_voisins_vivants= compte_voisins_vivants_nc;
-					voisinage = 1;
+					voisinage = 0;
 				}
 				else{
 					compte_voisins_vivants = compte_voisins_vivants_c;
@@ -125,6 +137,15 @@ void debut_jeu(grille *g, grille *gc){
 					noBug = 1;
 				}
 				break;
+			}
+
+			case 'o':
+			{	
+				oscillation = 1;
+				noBug = 1;
+				pas = check_oscillation(*g);
+				break;
+
 			}
 			default : 
 			{ // touche non traitée

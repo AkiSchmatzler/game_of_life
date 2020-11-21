@@ -7,7 +7,7 @@
  * \file jeu.h
  * \brief evolution de la partie
  * \author Aki Schmatzler
- * \version 4.0
+ * \version 5.0
  */
 
 
@@ -17,7 +17,7 @@
  * \param m
  * \return entier, modulo i%m
  */
-static inline int modulo(int i, int m) {return (i+m)%m;}
+static inline int modulo(int i, int m) {return (i+m)%m;};
 
 /**
  * \brief compte le nombre de voisins vivants de la cellule(i,j). Les bords sont cycliques

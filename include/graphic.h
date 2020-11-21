@@ -9,10 +9,10 @@
 #include <cairo/cairo-xlib.h>
 
 /**
- * \file grpahic.h
- * \brief se charge de l'affichage graphique
+ * \file graphic.h
+ * \brief se charge de l'affichage graphique (CAIRO)
  * \author Aki Schmatzler
- * \version 4.0
+ * \version 5.0
  */
 
 #define SIZEX 550 //largeur de la fenetre créé
@@ -22,7 +22,7 @@
 
 
 /**
- *\brief lance l'execution de l'affichage prahique(similaire a debut_jeu)
+ *\brief lance l'execution de l'affichage graphique(similaire a debut_jeu dans io.h)
  *\param g pointeur sur grille
  *\param gc pointeur sur grille
  */
@@ -46,7 +46,7 @@ void affiche_grille_cairo(cairo_surface_t *surface, grille g);
 
 
 /**
- *\brief affichage de l'écran d'attente quand l(utilisateur va choisir une nouvelle grille
+ *\brief affichage de l'écran d'attente quand l'utilisateur demande à choisir une nouvelle grille 
  *\param surface pointeur sur cairo_surface_t 
  */
 void switch_grid(cairo_surface_t *surface);

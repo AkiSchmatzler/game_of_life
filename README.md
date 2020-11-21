@@ -1,6 +1,6 @@
 # PROJET JEU DE LA VIE
  
-## Version 4.0
+## Version 5.0
 
 **Bienvenue sur mon implémentation du projet jeu de la vie, effectué dans le cadre du cours "Techniques de développement "de L2S3 Informatique, Université de Strasbourg, année 2020/2021**
 
@@ -12,9 +12,10 @@ chaque x.0 correspond à un niveau du projet complété, ainsi la version 1.0
 
 
 ### Makefile:   
-`make`: compile en mettant les .o dans /bin et le main dans /obj   
+`make`: compile (en mode graphique) et crée une librairie `libjeu.a` dans /lib et le main dans /obj   
+`make MODE=TEXTE`: compile en mode non graphique (dans le terminal) et crée une librairie `libjeu.a` dans /lib et le main dans /obj  
 `make docs`: génère la documentation html  
-`make clean`: vide /bin et/obj et supprime les répertoires  
+`make clean`: vide /lib et/obj et supprime les répertoires  
 `make dist`: crée une archive et la place dans /dist   
 `make rmdist`: supprime l'archive et le répertoire /dist  
 
@@ -38,7 +39,14 @@ Pour activer/désactiver le vieillissement des cellules, appuyer sur la touche *
 
 #### Cases non accessibles: 
 Les cases non accessibles (qui ne peuvent pas être vivantes) sont marqués par un X rouge. 
-Elles ont été spécifiées aléatoirement par mes soins dans les fichiers *.txt*.  
+Elles ont été spécifiées aléatoirement par mes soins dans les fichiers *.txt*. 
+
+#### Oscillation: 
+Pour tester l'oscillation dans un état d'une grille, presser la touche *o*. 
+Si il y a oscillation dans la mesure des calculs effectués (possible d'augmenter le volume de  
+calculs en changeant les valeurs des macros ITERATION_O_P et ITERATION_O_D dans grille.h), le  
+pas et le délai seront affichés, sinon un message disant que le programme n'a pas trouvé d'oscillation. 
+Un pas de 0 correspond à une grille vide. Une grille qui a une configuration stable aura un pas de 1. 
 
 
 ## Affichage graphique (cairo) 
@@ -59,5 +67,11 @@ Pour activer/désactiver le vieillissement des cellules, appuyer sur la touche *
 #### Cases non accessibles: 
 Les cases non accessibles (qui ne peuvent pas être vivantes) sont marqués par un carré bleu remplissant la case. 
 Elles ont été spécifiées aléatoirement par mes soins dans les fichiers *.txt*.  
-
+ 
+#### Oscillation: 
+Pour tester l'oscillation dans un état d'une grille, presser la touche *o*. 
+Si il y a oscillation dans la mesure des calculs effectués (possible d'augmenter le volume de  
+calculs en changeant les valeurs des macros ITERATION_O_P et ITERATION_O_D dans grille.h), le  
+pas et le délai seront affichés, sinon un message disant que le programme n'a pas trouvé d'oscillation. 
+Un pas de 0 correspond à une grille vide. Une grille qui a une configuration stable aura un pas de 1. 
 

@@ -4,7 +4,7 @@
  * \file jeu.c
  * \brief evolution de la partie
  * \author Aki Schmatzler
- * \version 4.0
+ * \version 5.0
  */
 
 int compte_voisins_vivants_c (int i, int j, grille g){

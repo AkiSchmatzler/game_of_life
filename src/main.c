@@ -9,7 +9,7 @@
  * \file mainc.c
  * \brief lance l'execution en mode graphique ou shell
  * \author Aki Schmatzler
- * \version 4.0
+ * \version 5.0
  */
 
 int main (int argc, char ** argv){

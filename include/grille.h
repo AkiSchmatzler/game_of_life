@@ -5,13 +5,19 @@
 #include <stdio.h>
 #include <assert.h>
 
+
+#define ITERATION_O_P 100 //nombre de test pour pas de l'oscillation
+#define ITERATION_0_D 100 //nombre de test pour delai oscillation
+
+
 /**
  * \file grille.h
  * \brief [header] gère la grille et les cellules
  * \author Aki Schmatzler
- * \version 4.0
+ * \version 5.0
  */
- 
+
+
 
 /**
  * \struct grille 
@@ -81,5 +87,29 @@ static inline int est_vivante(int i, int j, grille g){return ((1<=g.cellules[i][
  * \param gd grille
  */
 void copie_grille (grille gs, grille gd);
+
+
+/**
+ * \brief vérifie si une grille oscille (délais et pas)
+ * \param g
+ * \param gd grille
+ * \return un entier, le pas
+ */
+int check_oscillation(grille g);
+
+/**
+ * \brief vérifie si une grille est vide 
+ * \param g grille
+ * \return 0 ou 1 (= grille vide ou non)
+ */
+int grille_vide(grille g);
+
+/**
+ * \brief vérifie si toutes les cellules de deux grilles sont égales 
+ * \param g grille
+ * \param g2 grille
+ * \return 0 ou 1 selon si les deux grilles sont égales ou non
+ */
+int egalite_grilles(grille g, grille g2);//les deux grilles ont la meme taille!!
 
 #endif
