@@ -51,6 +51,8 @@ Un pas de 0 correspond à une grille vide. Une grille qui a une configuration st
 
 ## Affichage graphique (cairo) 
 (compilation avec `make`)  
+(pour changer la taille de la fenetre (pour afficher une grande grille par exemple), changer les macros SIZEX et SIZEY dans graphic.h). 
+ 
 
 #### Calcul cyclique/non cyclique:  
 Pour activer/désactiver le calcul cyclique, appuyer sur la touche *c*.  
