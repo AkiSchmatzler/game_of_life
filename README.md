@@ -1,6 +1,5 @@
 # PROJECT GAME OF LIFE 
  
-## Version 5.0
 
 **Welcome to my implementation of the game of life, made as a class project for one on my classes at the University of Strasbourg**  
 **This project uses Cairo graphics library for the graphic part, but is also available in Shell display**  
