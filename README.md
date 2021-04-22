@@ -11,7 +11,7 @@
 ### Makefile:   
 `make`: compiles (in graphical mode) and creates a library `libjeu.a` in /lib . The main wille be in /obj   
 `make MODE=TEXTE`: compiles in non-graphic mode and creates a library `libjeu.a` in /lib . The main will be in /obj  
-`make docs`: generates the html documentation  
+`make docs`: generates the html documentation (documentation is in French)  
 `make clean`: empties /lib and /obj and deletes those repositories 
 `make dist`: creates an archive and puts it in /dist   
 `make rmdist`: deletes the archive and the /dist repository  
